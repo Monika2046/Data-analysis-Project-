@@ -1,0 +1,31 @@
+#To clean the data script 
+
+import pandas as pd
+
+# ✅ Set your Excel file path
+file_path = r"path of file "
+
+# ✅ Load the specific sheet
+df = pd.read_excel(file_path, sheet_name="Data")
+
+# 🧹 Cleaning steps
+
+# 1. Remove completely empty rows
+df = df.dropna(how='all')
+
+# 2. Remove duplicate rows
+df = df.drop_duplicates()
+
+# 3. Optional: Fill or drop missing values
+# df = df.fillna("Not Available")  # OR df = df.dropna()
+
+# 4. Reset index after cleaning
+df.reset_index(drop=True, inplace=True)
+
+# ✅ Save the cleaned dataset
+df.to_excel("cleaned_hotel_report.xlsx", index=False)
+
+# ✅ Display info
+print("✅ Data cleaned successfully!")
+print("🔢 Final shape:", df.shape)
+print("📝 Cleaned data saved as 'cleaned_hotel_report.xlsx'")

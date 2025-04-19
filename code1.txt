@@ -1,0 +1,20 @@
+# remove duplicates 
+
+import pandas as pd
+
+# Load the Excel file
+file_path = "hotel report.xlsx"
+df = pd.read_excel(file_path, sheet_name="Data")
+
+# Display original shape
+print("Original shape:", df.shape)
+
+# Remove duplicate rows
+df_cleaned = df.drop_duplicates()
+
+# Display new shape
+print("Shape after removing duplicates:", df_cleaned.shape)
+
+# Optionally save the cleaned data to a new Excel file
+df_cleaned.to_excel("cleaned_hotel_report.xlsx", index=False)
+print("Cleaned data saved as 'cleaned_hotel_report.xlsx'")
